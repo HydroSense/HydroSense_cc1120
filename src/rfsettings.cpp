@@ -4,7 +4,10 @@
 
 void configureRadio()
 {
-  //
+
+// 915.000 MHz
+// 1.2 ksps, 1.2 kbps
+// 2-FSK, 32 MHz xtal, 25 kHz filter BW, PA ramping, 27 dBM TX power
 // Rf settings for CC1120
 //
 halRfWriteReg(CC112X_IOCFG3,0xB0);        //GPIO3 IO Pin Configuration
@@ -13,13 +16,16 @@ halRfWriteReg(CC112X_IOCFG1,0xB0);        //GPIO1 IO Pin Configuration
 halRfWriteReg(CC112X_IOCFG0,0x40);        //GPIO0 IO Pin Configuration
 halRfWriteReg(CC112X_SYNC_CFG1,0x0B);     //Sync Word Detection Configuration Reg. 1
 halRfWriteReg(CC112X_DCFILT_CFG,0x1C);    //Digital DC Removal Configuration
+halRfWriteReg(CC112X_PREAMBLE_CFG1,0x18); //Preamble Length Configuration Reg. 1
 halRfWriteReg(CC112X_IQIC,0xC6);          //Digital Image Channel Compensation Configuration
+halRfWriteReg(CC112X_CHAN_BW,0x08);       //Channel Filter Configuration
 halRfWriteReg(CC112X_MDMCFG0,0x05);       //General Modem Parameter Configuration Reg. 0
 halRfWriteReg(CC112X_AGC_REF,0x20);       //AGC Reference Level Configuration
 halRfWriteReg(CC112X_AGC_CS_THR,0x19);    //Carrier Sense Threshold Configuration
 halRfWriteReg(CC112X_AGC_CFG1,0xA9);      //Automatic Gain Control Configuration Reg. 1
 halRfWriteReg(CC112X_AGC_CFG0,0xCF);      //Automatic Gain Control Configuration Reg. 0
 halRfWriteReg(CC112X_FIFO_CFG,0x00);      //FIFO Configuration
+halRfWriteReg(CC112X_SETTLING_CFG,0x03);  //Frequency Synthesizer Calibration and Settling Con..
 halRfWriteReg(CC112X_FS_CFG,0x12);        //Frequency Synthesizer Configuration
 halRfWriteReg(CC112X_PKT_CFG0,0x20);      //Packet Configuration Reg. 0
 halRfWriteReg(CC112X_PA_CFG2,0x77);       //Power Amplifier Configuration Reg. 2
@@ -42,5 +48,9 @@ halRfWriteReg(CC112X_FS_SPARE,0xAC);      //Frequency Synthesizer Spare
 halRfWriteReg(CC112X_FS_VCO0,0xB4);       //FS Voltage Controlled Oscillator Configuration Reg..
 halRfWriteReg(CC112X_XOSC5,0x0E);         //Crystal Oscillator Configuration Reg. 5
 halRfWriteReg(CC112X_XOSC1,0x03);         //Crystal Oscillator Configuration Reg. 1
+halRfWriteReg(CC112X_PARTNUMBER,0x48);    //Part Number
+halRfWriteReg(CC112X_PARTVERSION,0x21);   //Part Revision
+halRfWriteReg(CC112X_MODEM_STATUS1,0x10); //Modem Status Reg. 1
+
 
 }
